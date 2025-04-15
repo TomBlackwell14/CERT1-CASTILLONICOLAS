@@ -11,7 +11,6 @@
     object-fit: cover;
 }
 
-/**/
 #ImagenCentral {
     display: block;
     margin: 40px auto;
@@ -33,6 +32,12 @@
 }
 
 
+
+.FilaViajaConNosotros {
+    display: inline-block;
+    align-items: center;
+}
+
 footer {
     background-color: #f8f9fa;
     text-align: center;
@@ -42,15 +47,8 @@ footer {
     color: #555;
 }
 
-.FilaViajaConNosotros {
-    display: inline-block;
-    align-items: center;
-}
-
-
 
 /*Lo necesario para Planifica.html*/
-
 #PlanificaViaje {
     background-color: #f1f8ff;
     padding: 30px;
@@ -74,22 +72,17 @@ footer {
 
 /*Desplegable de sugerencias*/
 .sugerencias-container {
-    position: absolute;
+    position: absolute; 
     background: white;
     border: 1px solid #ccc;
-    width: 100%;
     max-height: 200px;
     overflow-y: auto;
-    /*!!!!*/
+    width: 200px;
+    
 }
-
 .sugerencia-item {
-    padding: 8px;
-    cursor: pointer;
-}
-
-.sugerencia-item:hover {
-    background-color: #f0f0f0;
+    padding: 8px;  
+    cursor: pointer; 
 }
 
 
@@ -99,74 +92,16 @@ footer {
 
 
 /*Lo necesario para Contactanos.html*/
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+.formulario-contacto {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    color: #333;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
 
-main {
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    perspective: 2px;
-}
 
-section {
-    transform-style: preserve-3d;
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFF;
-}
 
-section h1 {
-    text-align: center;
-    font-size: 4rem;
-    font-family: sans-serif;
-}
-
-.no-parallax {
-    background-color: #5333ed;
-    z-index: 999;
-}
-
-.parallax h1 {
-    width: 60%;
-    font-size: 2rem;
-}
-
-.parallax::after {
-    content: " ";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: translateZ(-1px) scale(1.5);
-    background-size: 100%;
-    z-index: -1;
-}
-
-.bg::after {
-    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("/images/turismo_sostenible.jpg");
-    background-size: cover;
-}
-
-@media screen and (min-width: 768px) {
-    section h1 {
-        font-size: 8rem;
-    }
-
-    .parallax h1 {
-        font-size: 4rem;
-    }
-}

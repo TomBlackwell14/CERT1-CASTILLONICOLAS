@@ -1,5 +1,5 @@
-/*FUNCION DE PLANIFICA.HTML*/ 
-const opciones = [
+/*FUNCION DE PLANIFICA.HTML*/
+var opciones = [
     "Italia", "Francia", "España", "Estados Unidos", "México", "Tailandia", "Indonesia", "China", "Japón", "Vietnam",
     "Egipto", "Grecia", "Turquía", "Reino Unido", "Alemania", "Australia", "Canadá", "India", "Brasil", "Argentina",
     "Chile", "Perú", "Colombia", "Portugal", "Países Bajos", "Suiza", "Suecia", "Noruega", "Dinamarca", "Finlandia",
@@ -7,42 +7,41 @@ const opciones = [
     "Panamá", "República Dominicana", "Filipinas", "Malasia", "Corea del Sur", "Israel", "Emiratos Árabes Unidos", "Irlanda", "Bélgica", "Croacia"
 ];
 
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("JavaScript cargado correctamente!");
 
-    const input = document.getElementById("destino");
-    const sugerenciasContainer = document.getElementById("sugerencias");
-  
-    function filtrarOpciones() {  //Funcion principal
-        sugerenciasContainer.innerHTML = "";
-        const valor = input.value.trim().toLowerCase();
+var input = document.getElementById("destino");
+var sugerencias = document.getElementById("sugerencias");
 
-        if (valor === "") {
-            sugerenciasContainer.style.display = "none"; // Oculta sugerencias si el campo está vacío
-            return;
-        }
+input.onkeyup = function () {
+    //Limpiamos las sugerencias
+    sugerencias.innerHTML = "";
 
-        const resultados = opciones.filter(opcion => opcion.toLowerCase().includes(valor));
+    var texto = input.value.toLowerCase();
 
-        sugerenciasContainer.style.display = "block"; // Muestra opciones al escribir
-
-        resultados.forEach(opcion => {
-            const div = document.createElement("div");
-            div.classList.add("sugerencia-item");
-            div.textContent = opcion;
-            div.onclick = () => {
-                input.value = opcion;
-                sugerenciasContainer.style.display = "none"; // Oculta la lista al seleccionar
-            };
-            sugerenciasContainer.appendChild(div);
-        });
+    //en caso de input vacio no se muestran sugerencias
+    if (texto === "") {
+        sugerencias.style.display = "none";
+        return;
     }
 
-    input.addEventListener("input", filtrarOpciones);
+    //Recorremos la lista de opciones revisando si hay coincidencia 
+    for (var i = 0; i < opciones.length; i++) {
+        var pais = opciones[i].toLowerCase(); //Para que coincida el formato
 
-    document.addEventListener("click", (e) => {
-        if (!sugerenciasContainer.contains(e.target) && e.target !== input) {
-            sugerenciasContainer.style.display = "none"; // Oculta sugerencias si el usuario hace clic fuera
+        if (pais.indexOf(texto) !== -1) {
+
+            var div = document.createElement("div");
+            div.innerText = opciones[i];
+
+            div.onclick = function () { //al hacer click en la sugerencia se le pasa el texto de 
+                input.value = this.innerText;
+                sugerencias.style.display = "none";
+            };
+
+            sugerencias.appendChild(div);
+            sugerencias.style.display = "block"; // Solo si hay coicidencia mostramos el contenido de sugerencias.
         }
-    });
-});
+    }
+};
+
+
+
