@@ -37,7 +37,7 @@ input.onkeyup = function () {
                 sugerencias.style.display = "none";
             };
 
-            sugerencias.appendChild(div);
+            sugerencias.appendChild(div); 
             sugerencias.style.display = "block"; // Solo si hay coicidencia mostramos el contenido de sugerencias.
         }
     }
